@@ -15,7 +15,6 @@ jobs:
       BRANCH_NAME: ${{ github.head_ref }}
       SOURCE_DIR: 'public'
       DEST_DIR: ${{ github.head_ref }}/${{ github.sha }}
-      CI: false
 
     steps:
       - name: Missing AWS Credentials
@@ -30,7 +29,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Setup app
-        run: npm install
+        run: npm ci
       - name: Clean out directory
         run: rm -rf ${{ env.SOURCE_DIR }}
       ####### Uncomment below to add env variables to use during build process #######
